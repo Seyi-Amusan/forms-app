@@ -1,25 +1,75 @@
-import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
+import SideNav from './components/sideNav';
+import StepOne from './components/steps/step-1';
+import StepTwo from './components/steps/step-2';
+import StepThree from './components/steps/step-3';
+import StepFour from './components/steps/step-4';
+import Submit from './components/submit';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  state = { 
+    stepOne: {},
+    stepTwo: {},
+    stepThree: {},
+    stepFour: {},
+  }
+  
+  handleFormSubmit = (step, data) => {
+    this.setState({
+      [step]: data,
+    })
+  }
+
+
+  render() { 
+    console.log(this.state.stepOne);
+    
+    return (
+      <BrowserRouter>
+        <div className="App">
+        <div className='container'>
+          <SideNav />
+          <>
+              <Routes>
+                <Route
+                  index
+                  path='/step-One'
+                  element={<StepOne onSubmit={(data) => this.handleFormSubmit('stepOne', data)} />}
+                />
+
+                <Route
+                  path='/step-Two'
+                  element={<StepTwo />}
+                />
+
+                <Route
+                  path='/step-Three'
+                  element={<StepThree />}
+                />
+
+                <Route
+                  path='/step-Four'
+                  element={<StepFour userChoice={this.state} />}
+                />
+                
+                <Route
+                  path='/submit'
+                  element={<Submit />}
+                />
+              </Routes>
+          </>
+        </div>
+        </div>
+        
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
