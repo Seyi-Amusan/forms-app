@@ -192,7 +192,7 @@ input{
   cursor: pointer;
 }
 
-.plan-container:focus{
+.plan-container.clicked{
   border: 1px solid hsl(243, 100%, 62%);
 }
 

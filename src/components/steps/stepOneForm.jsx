@@ -2,13 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import FormFooter from "../formFooter";
 import FormHeader from "../formHeader";
 
-function StepForm({ heading, text, fields, nextRouteUrl, prevRouteUrl, showPrev, onSubmit }) {
+function StepOneForm({ heading, text, fields, nextRouteUrl, prevRouteUrl, showPrev, onSubmit }) {
     const navigate = useNavigate();
   
     const handleSubmit = (e) => {
       e.preventDefault();
       onSubmit();  // Trigger the parent's onSubmit handler
-      navigate(nextRouteUrl);  // Navigate to the next step
+      navigate(nextRouteUrl);  
     };
   
     return (
@@ -33,5 +33,5 @@ function StepForm({ heading, text, fields, nextRouteUrl, prevRouteUrl, showPrev,
     );
   }
   
-  export default StepForm;
+  export default StepOneForm;
   

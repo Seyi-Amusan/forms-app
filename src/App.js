@@ -6,21 +6,49 @@ import StepTwo from './components/steps/step-2';
 import StepThree from './components/steps/step-3';
 import StepFour from './components/steps/step-4';
 import Submit from './components/submit';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 class App extends Component {
+
   constructor(props) {
-    super(props);
+    super(props)
+
+    this.state = { 
+      //step one
+      stepOne: {},
+  
+      //step two
+      selectedPlans: [],
+  
+      stepThree: {},
+      stepFour: {},
+    }
+  
+    // Binding the method to update selected plan
+    this.setSelectedPlans = this.setSelectedPlans.bind(this);
   }
 
-  state = { 
-    stepOne: {},
-    stepTwo: {},
-    stepThree: {},
-    stepFour: {},
+  //step two
+  // Method to toggle plan selection (add/remove plan)
+  setSelectedPlans(plan) {
+    this.setState((prevState) => {
+      if (prevState.selectedPlans.includes(plan)) {
+        // If the plan is already selected, remove it
+        return {
+          selectedPlans: prevState.selectedPlans.filter(p => p !== plan),
+        };
+      } else {
+        // If the plan is not selected, add it
+        return {
+          selectedPlans: [...prevState.selectedPlans, plan],
+        };
+      }
+    });
   }
   
-  handleFormSubmit = (step, data) => {
+
+  //step one
+  handleStepOneFormSumbit = (step, data) => {
     this.setState({
       [step]: data,
     })
@@ -28,8 +56,6 @@ class App extends Component {
 
 
   render() { 
-    console.log(this.state.stepOne);
-    
     return (
       <BrowserRouter>
         <div className="App">
@@ -38,14 +64,21 @@ class App extends Component {
           <>
               <Routes>
                 <Route
+                  path="/"
+                  element={<Navigate to="/step-one" />} />
+                
+                <Route
                   index
                   path='/step-One'
-                  element={<StepOne onSubmit={(data) => this.handleFormSubmit('stepOne', data)} />}
+                  element={<StepOne onSubmit={(data) => this.handleStepOneFormSumbit('stepOne', data)} />}
                 />
 
                 <Route
                   path='/step-Two'
-                  element={<StepTwo />}
+                  element={<StepTwo
+                    selectedPlans={this.state.selectedPlans}
+                    setSelectedPlans={this.setSelectedPlans}
+                  />}
                 />
 
                 <Route

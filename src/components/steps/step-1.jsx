@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StepForm from './stepForm';
+import StepOneForm from './stepOneForm';
 
 class StepOne extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class StepOne extends Component {
     ];
 
     return (
-      <StepForm
+      <StepOneForm
         heading="Personal Info"
         text="Please provide your name, email address, and phone number"
         fields={fields}

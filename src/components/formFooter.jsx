@@ -1,25 +1,23 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
 function FormFooter({ prev, prevRouteUrl, nextRouteUrl }) {
 
-    // function goBack() {
-    //     const navigate = useNavigate()
-    //     navigate(prevRouteUrl)
-    // }
+    const navigate = useNavigate(); 
 
-    let x = 'hidden';
+    let cls = 'hidden';
     if (prev) {
-        x = '';
+        cls = '';
     }
 
     return (
         <div className="step-footer">
             {prev && (
-                <button className={x}>
-                    <Link to={`/${prevRouteUrl}`}>Go back</Link>
-                </button>
+                <button
+                    className={cls}
+                    onClick={() => navigate(`/${prevRouteUrl}`)}
+                >Go back</button>
             )}
             <button type="submit">Next step</button>
         </div>

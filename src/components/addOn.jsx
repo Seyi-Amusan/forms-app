@@ -2,7 +2,7 @@ function AddOn({heading, text, price}) {
     return (
         <div className="add-on-container">
             <div>
-                <select></select>
+                <input type="checkbox" />
             </div>
 
             <div>
