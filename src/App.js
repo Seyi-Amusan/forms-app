@@ -6,100 +6,85 @@ import StepTwo from './components/steps/step-2';
 import StepThree from './components/steps/step-3';
 import StepFour from './components/steps/step-4';
 import Submit from './components/submit';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 class App extends Component {
-
   constructor(props) {
     super(props)
 
     this.state = { 
-      //step one
-      stepOne: {},
-  
       //step two
-      selectedPlans: [],
+      selectedPlan: '', // Changed from array to a single string
   
-      stepThree: {},
-      stepFour: {},
+      //step three
+      selectedAddOns: [] // Still an array for multiple add-ons
     }
   
-    // Binding the method to update selected plan
-    this.setSelectedPlans = this.setSelectedPlans.bind(this);
+    // Binding the methods
+    this.setSelectedPlan = this.setSelectedPlan.bind(this);
+    this.setSelectedAddOns = this.setSelectedAddOns.bind(this);
   }
 
   //step two
-  // Method to toggle plan selection (add/remove plan)
-  setSelectedPlans(plan) {
+  // Method to set a single selected plan
+  setSelectedPlan(plan) {
+    this.setState({
+      selectedPlan: plan // Store only the selected plan as a string
+    });
+  }
+
+  //step three
+  // Method to toggle add-on selection (add/remove add-on)
+  setSelectedAddOns(addOn) {
     this.setState((prevState) => {
-      if (prevState.selectedPlans.includes(plan)) {
-        // If the plan is already selected, remove it
+      if (prevState.selectedAddOns.includes(addOn)) {
         return {
-          selectedPlans: prevState.selectedPlans.filter(p => p !== plan),
+          selectedAddOns: prevState.selectedAddOns.filter(a => a !== addOn),
         };
       } else {
-        // If the plan is not selected, add it
         return {
-          selectedPlans: [...prevState.selectedPlans, plan],
+          selectedAddOns: [...prevState.selectedAddOns, addOn],
         };
       }
     });
   }
   
-
-  //step one
-  handleStepOneFormSumbit = (step, data) => {
-    this.setState({
-      [step]: data,
-    })
-  }
-
-
   render() { 
     return (
-      <BrowserRouter>
+      <BrowserRouter basename='forms-app'>
         <div className="App">
-        <div className='container'>
-          <SideNav />
-          <>
+          <div className='container'>
+            <SideNav />
+            <>
               <Routes>
-                <Route
-                  path="/"
-                  element={<Navigate to="/step-one" />} />
-                
-                <Route
-                  index
-                  path='/step-One'
-                  element={<StepOne onSubmit={(data) => this.handleStepOneFormSumbit('stepOne', data)} />}
-                />
+                <Route path="/" element={<StepOne />} />
+                <Route index path='/step-One' element={<StepOne />} />
 
+                {/* Pass selectedPlan as a string and setSelectedPlan */}
                 <Route
                   path='/step-Two'
                   element={<StepTwo
-                    selectedPlans={this.state.selectedPlans}
-                    setSelectedPlans={this.setSelectedPlans}
+                    selectedPlan={this.state.selectedPlan}
+                    setSelectedPlan={this.setSelectedPlan}
                   />}
                 />
 
                 <Route
                   path='/step-Three'
-                  element={<StepThree />}
+                  element={<StepThree
+                    selectedAddOns={this.state.selectedAddOns}
+                    setSelectedAddOns={this.setSelectedAddOns}
+                  />}
                 />
 
-                <Route
-                  path='/step-Four'
-                  element={<StepFour userChoice={this.state} />}
-                />
+                {/* Pass user choices to StepFour */}
+                <Route path='/step-Four' element={<StepFour userChoice={this.state} />} />
                 
-                <Route
-                  path='/submit'
-                  element={<Submit />}
-                />
+                <Route path='/submit' element={<Submit />} />
               </Routes>
-          </>
+            </>
+          </div>
         </div>
-        </div>
-        
       </BrowserRouter>
     );
   }

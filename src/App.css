@@ -12,20 +12,41 @@ body{
   background-color: hsl(229, 24%, 87%);
 }
 
-a{
-  text-decoration: none;
+hr{
+  height: 1px;
+  color: white;
 }
 
 input:focus{
   outline: none;
 }
 
+a{
+  text-decoration: none;
+}
+
+button{
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  font-size:  2rem;
+  color: hsl(0, 0%, 100%);
+  font-weight: 500;
+  background-color: hsl(243, 100%, 62%);
+  border: 0;
+  border-radius: 1rem;
+}
+
+button.white{
+  background-color: transparent;
+  color: hsl(231, 11%, 63%);
+}
+
 .App{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-
+  min-height: 100vh;
+  
   position: relative;
 }
 
@@ -46,6 +67,7 @@ input:focus{
   position: relative;
 }
 
+
 .side-nav{
   background-image: url(../assets/images/bg-sidebar-desktop.svg);
   background-repeat: none;
@@ -65,10 +87,6 @@ input:focus{
   cursor: pointer;
   color: white;
   margin-bottom: 2.5rem;
-}
-
-button{
-  cursor: pointer;
 }
 
 .index{
@@ -114,6 +132,8 @@ button{
 
 .step-text{
   font-size: 2rem;
+  color: hsl(231, 11%, 63%);
+
 }
 
 label{
@@ -126,6 +146,7 @@ label{
 input{
   padding: 1rem;
   width: 80%;
+  font-size: 2rem;
 }
 
 .step-one-body > *{
@@ -143,11 +164,6 @@ input{
 .step-footer{
   display: flex;
   justify-content: space-between;
-
-  > *{
-    padding:  1rem 2rem;
-    font-size:  2rem;
-  }
 }
 
 .hidden{
@@ -161,11 +177,15 @@ input{
   column-gap: 2rem;
   align-items: center;
   
-  border: 1px solid hsl(243, 100%, 62%);
+  border: 1px solid hsl(229, 24%, 87%);
   border-radius: 1rem;
   padding: 1.5rem;
   margin-bottom: 2rem;
   cursor: pointer;
+}
+
+.add-on-container.clicked{
+  border: 1px solid hsl(243, 100%, 62%);
 }
 
 .add-on-heading{
@@ -188,6 +208,7 @@ input{
 .plan-container{
   padding: 2rem;
   border-radius: 1rem;
+  border: 1px solid hsl(229, 24%, 87%);
   width: 18rem;
   cursor: pointer;
 }
@@ -209,6 +230,36 @@ input{
   font-size: 1.5rem;
 }
 
+.user-choice{
+  background-color: hsl(217, 100%, 97%);
+  padding: 2.2rem;
+  margin-bottom: 2rem;
+  border-radius: 2rem;
+}
+
+.selected-plan-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.selected-plan-container > p{
+  font-weight: bold;
+  color: hsl(213, 96%, 18%);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.selected-addon-container > p{
+  font-weight: medium;
+  font-size: 2.2rem;
+  color: hsl(231, 11%, 63%);
+  margin: 0.8rem 0;
+}
+
+.submit{
+  text-align: center;
+}
+
 
 .ty-heading{
   font-size: 5rem;
@@ -218,6 +269,8 @@ input{
 .ty-text{
   font-size: 1.8rem;
 }
+
+
 
 @media (max-width: 550px) {
   .step-container{

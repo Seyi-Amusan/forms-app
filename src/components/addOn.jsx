@@ -1,8 +1,19 @@
-function AddOn({heading, text, price}) {
+import React from 'react';
+
+function AddOn({ heading, text, price, isSelected, onSelect }) {
+
+    const handleClick = () => {
+        onSelect(heading); // Toggle add-on selection
+    };
+
     return (
-        <div className="add-on-container">
+        <div className="add-on-container" onClick={handleClick}>
             <div>
-                <input type="checkbox" />
+                <input 
+                    type="checkbox" 
+                    checked={isSelected} 
+                    onChange={() => onSelect(heading)} // Toggle checkbox directly if clicked
+                />
             </div>
 
             <div>

@@ -2,23 +2,16 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function FormFooter({ prev, prevRouteUrl, nextRouteUrl }) {
+function FormFooter({ prevRouteUrl }) {
 
     const navigate = useNavigate(); 
 
-    let cls = 'hidden';
-    if (prev) {
-        cls = '';
-    }
-
     return (
         <div className="step-footer">
-            {prev && (
-                <button
-                    className={cls}
-                    onClick={() => navigate(`/${prevRouteUrl}`)}
-                >Go back</button>
-            )}
+            <button
+                className={`white ${prevRouteUrl ? '' : 'hidden'}`} //if theres no prev route this btn should be hidden
+                onClick={() => navigate(`/${prevRouteUrl}`)}
+            >Go back</button>
             <button type="submit">Next step</button>
         </div>
     );

@@ -3,14 +3,24 @@ import FormFooter from "../formFooter";
 import FormHeader from "../formHeader";  
 import { useNavigate } from "react-router-dom";
 
-function StepThree() {
+function StepThree({ selectedAddOns, setSelectedAddOns }) {
+
+    
 
     const navigate = useNavigate(); // Use useNavigate for programmatic navigation
 
+    // Handle selecting/unselecting an add-on
+    const handleAddOnSelect = (addOnName) => {
+        setSelectedAddOns(addOnName); // Toggle the add-on in App.js state
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
-        console.log('submit'); // Log 'submit' to the console
-        navigate('/step-Four'); // Programmatically navigate to the next step
+        if (selectedAddOns.length === 0) {
+            alert('Please select at least one add-on before proceeding.');
+            return;
+        }
+        navigate('/step-Four'); // Navigate to the next step
     };
 
     return (
@@ -25,28 +35,32 @@ function StepThree() {
                     heading='Online service'
                     text='Access to multiplayer games'
                     price='+$1/mo'
+                    isSelected={selectedAddOns.includes('Online service')}
+                    onSelect={handleAddOnSelect}
                 />
 
                 <AddOn
                     heading='Larger storage'
                     text='Extra 1TB of cloud save'
                     price='+$2/mo'
+                    isSelected={selectedAddOns.includes('Larger storage')}
+                    onSelect={handleAddOnSelect}
                 />
 
                 <AddOn
                     heading='Customizable profile'
                     text='Custom theme on your profile'
                     price='+$1/mo'
+                    isSelected={selectedAddOns.includes('Customizable profile')}
+                    onSelect={handleAddOnSelect}
                 />
 
                 <div>
-                    <FormFooter prev={true} nextRouteUrl='step-Four' prevRouteUrl='step-Two' />
+                    <FormFooter nextRouteUrl='step-Four' prevRouteUrl='step-Two' />
                 </div>
         </form>
-  
-
-
-    </div> );
+    </div>
+    );
 }
 
 export default StepThree;

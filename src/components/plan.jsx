@@ -7,10 +7,7 @@ function Plan({ iconUrl, name, price, timeFree, isSelected, onSelect }) {
     };
 
     return (
-        <div
-            className={`plan-container ${isSelected ? 'clicked' : ''}`}
-            onMouseUp={handleClick}
-        >
+        <div className={`plan-container ${isSelected ? 'clicked' : ''}`} onMouseUp={handleClick}>
             <img className="plan-icon" src={iconUrl} alt="plan-icon" />
 
             <div>

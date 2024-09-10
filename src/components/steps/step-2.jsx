@@ -3,19 +3,19 @@ import FormFooter from "../formFooter";
 import FormHeader from "../formHeader";  
 import Plan from "../plan";
 
-function StepTwo({ selectedPlans, setSelectedPlans }) {
+function StepTwo({ selectedPlan, setSelectedPlan }) {
 
     const navigate = useNavigate(); 
 
-    // Handle selecting/unselecting a plan
+    // Handle selecting a plan (only one plan can be selected)
     const handlePlanSelect = (planName) => {
-        setSelectedPlans(planName); // Toggle plan selection in App's state
+        setSelectedPlan(planName); // Update the selected plan in App's state
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (selectedPlans.length === 0) {
-            alert('Please select at least one plan before proceeding.');
+        if (!selectedPlan) {
+            alert('Please select a plan before proceeding.');
             return;
         }
         navigate('/step-Three'); // Navigate to step 3
@@ -31,35 +31,35 @@ function StepTwo({ selectedPlans, setSelectedPlans }) {
             <form onSubmit={handleSubmit}>
                 <div className="plans">
                     <Plan
-                        iconUrl='/images/icon-arcade.svg'
+                        iconUrl='images/icon-arcade.svg'
                         name='Arcade'
                         price='$90/yr'
                         timeFree='2 months free'
-                        isSelected={selectedPlans.includes('Arcade')}
+                        isSelected={selectedPlan === 'Arcade'}
                         onSelect={handlePlanSelect}
                     />
 
                     <Plan
-                        iconUrl='/images/icon-advanced.svg'
+                        iconUrl='images/icon-advanced.svg'
                         name='Advanced'
                         price='$120/yr'
                         timeFree='2 months free'
-                        isSelected={selectedPlans.includes('Advanced')}
+                        isSelected={selectedPlan === 'Advanced'}
                         onSelect={handlePlanSelect}
                     />
 
                     <Plan
-                        iconUrl='/images/icon-pro.svg'
+                        iconUrl='images/icon-pro.svg'
                         name='Pro'
                         price='$150/yr'
                         timeFree='2 months free'
-                        isSelected={selectedPlans.includes('Pro')}
+                        isSelected={selectedPlan === 'Pro'}
                         onSelect={handlePlanSelect}
                     />
                 </div>
 
                 <div>
-                    <FormFooter prev={true} nextRouteUrl='step-Three' prevRouteUrl='step-One' /> 
+                    <FormFooter nextRouteUrl="step-Three" prevRouteUrl="step-One" /> 
                 </div>
             </form>
         </div>
