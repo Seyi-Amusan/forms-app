@@ -10,6 +10,7 @@ html{
 
 body{
   background-color: hsl(229, 24%, 87%);
+  min-height: 100vh;
 }
 
 hr{
@@ -39,6 +40,10 @@ button{
 button.white{
   background-color: transparent;
   color: hsl(231, 11%, 63%);
+}
+
+#root{
+  min-height: 100vh;
 }
 
 .App{

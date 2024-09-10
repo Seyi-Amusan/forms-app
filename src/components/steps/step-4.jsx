@@ -50,8 +50,8 @@ function StepFour(props) {
                 <hr />
 
                 <div>
-                    {selectedAddOns.map((addOn) => {
-                        return  <div className="selected-addon-container">
+                    {selectedAddOns.map((addOn, index) => {
+                        return  <div className="selected-addon-container" key={index}>
                                     <p>{addOn}</p>
                                 </div>
                     })}
