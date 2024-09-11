@@ -11,6 +11,10 @@ html{
 body{
   background-color: hsl(229, 24%, 87%);
   min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 hr{
@@ -43,14 +47,14 @@ button.white{
 }
 
 #root{
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .App{
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   
   position: relative;
 }
@@ -285,13 +289,26 @@ input{
 }
 
 @media (max-width: 765px) {
+
+  body, .App, #root{
+    min-height: 100vh;
+  }
+
+  body{
+    padding-bottom: 5rem;
+  }
+
+
   .container{
+    overflow-y: scroll;
+
     grid-auto-flow: row;
     grid-template-columns: 1fr;
     grid-template-rows: 25rem 1fr;
     justify-items: center;
 
     width: 100vw;
+    /* height: min-content; */
     min-height: 100vh;
     min-width: auto;
     padding: 0;
