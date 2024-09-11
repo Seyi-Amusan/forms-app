@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/forms-app/static/css/main.0629bc93.css",
+    "main.css": "/forms-app/static/css/main.6af82155.css",
     "main.js": "/forms-app/static/js/main.d2d13633.js",
     "static/js/453.dfc5c344.chunk.js": "/forms-app/static/js/453.dfc5c344.chunk.js",
     "static/media/bg-sidebar-desktop.svg": "/forms-app/static/media/bg-sidebar-desktop.6918153f38678372ceb1.svg",
     "static/media/bg-sidebar-mobile.svg": "/forms-app/static/media/bg-sidebar-mobile.ad41661b40ca0b967f3a.svg",
     "index.html": "/forms-app/index.html",
-    "main.0629bc93.css.map": "/forms-app/static/css/main.0629bc93.css.map",
+    "main.6af82155.css.map": "/forms-app/static/css/main.6af82155.css.map",
     "main.d2d13633.js.map": "/forms-app/static/js/main.d2d13633.js.map",
     "453.dfc5c344.chunk.js.map": "/forms-app/static/js/453.dfc5c344.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0629bc93.css",
+    "static/css/main.6af82155.css",
     "static/js/main.d2d13633.js"
   ]
 }
