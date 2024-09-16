@@ -14,10 +14,10 @@ class App extends Component {
 
     this.state = { 
       //step two
-      selectedPlan: '', // Changed from array to a single string
+      selectedPlan: '', 
   
       //step three
-      selectedAddOns: [] // Still an array for multiple add-ons
+      selectedAddOns: [] 
     }
   
     // Binding the methods
@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   //step three
-  // Method to toggle add-on selection (add/remove add-on)
+  // Method to add or remove add-on
   setSelectedAddOns(addOn) {
     this.setState((prevState) => {
       if (prevState.selectedAddOns.includes(addOn)) {
@@ -60,7 +60,6 @@ class App extends Component {
                 <Route path="/" element={<StepOne />} />
                 <Route index path='/step-One' element={<StepOne />} />
 
-                {/* Pass selectedPlan as a string and setSelectedPlan */}
                 <Route
                   path='/step-Two'
                   element={<StepTwo
@@ -77,7 +76,6 @@ class App extends Component {
                   />}
                 />
 
-                {/* Pass user choices to StepFour */}
                 <Route path='/step-Four' element={<StepFour userChoice={this.state} />} />
                 
                 <Route path='/submit' element={<Submit />} />

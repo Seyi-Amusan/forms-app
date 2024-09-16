@@ -7,7 +7,7 @@ function StepThree({ selectedAddOns, setSelectedAddOns }) {
 
     
 
-    const navigate = useNavigate(); // Use useNavigate for programmatic navigation
+    const navigate = useNavigate(); 
 
     // Handle selecting/unselecting an add-on
     const handleAddOnSelect = (addOnName) => {
@@ -15,12 +15,12 @@ function StepThree({ selectedAddOns, setSelectedAddOns }) {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault(); 
         if (selectedAddOns.length === 0) {
             alert('Please select at least one add-on before proceeding.');
             return;
         }
-        navigate('/step-Four'); // Navigate to the next step
+        navigate('/step-Four'); 
     };
 
     return (

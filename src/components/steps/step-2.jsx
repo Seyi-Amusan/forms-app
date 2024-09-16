@@ -18,7 +18,7 @@ function StepTwo({ selectedPlan, setSelectedPlan }) {
             alert('Please select a plan before proceeding.');
             return;
         }
-        navigate('/step-Three'); // Navigate to step 3
+        navigate('/step-Three'); 
     };
 
     return (
