@@ -353,6 +353,9 @@ input{
 
 @media (max-width: 490px) {
   
+  html{
+    font-size: 55%;
+  }
 
   .plans{
     grid-auto-flow: row;
